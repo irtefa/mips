@@ -18,8 +18,8 @@ function enumerateLines(content) {
 };
 
 /*
- * @param opcode {string} opcode 
- * @return true/ false {boolean} invalid opcode
+ * @param opcode {string}
+ * @return {boolean} true invalid opcode
  */
 
 function invalidOpcode(opcode) {
@@ -33,8 +33,20 @@ function invalidOpcode(opcode) {
 };
 
 /*
+ * @param line {string}
+ * @return {boolean} true if it is a comment
+ */
+
+function thisLineIsAComment(line) {
+  if (line[0] === "#") {
+      return true;
+  } else {
+      return false;
+  }
+};
+/*
  * @param line {string} single line of code
- * @return true/ false {boolean} syntax error
+ * @return {boolean}
  */
 
 function thereIsSyntaxError(line) {
