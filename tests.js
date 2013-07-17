@@ -20,5 +20,6 @@ test("is a full line comment", function() {
     equal(thisLineIsAComment("#this #line is a comment"), true);
     equal(thisLineIsAComment("#1--00000"), true);
     equal(thisLineIsAComment("#########################"), true);
+    equal(thisLineIsAComment("    #blah blah"), true);
     equal(thisLineIsAComment("aba cdc #ccccc"), false);
 });
