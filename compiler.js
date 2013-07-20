@@ -10,12 +10,26 @@ function enumerateLines(content) {
     
     // add line numbers to content
     for (var i in contentList) {
-        // strip white spaces and add line number
-        contentList[i] = contentList[i].replace(/\s/g, '') + " " + lineNum;
+        contentList[i] = enumerateSingleLine(contentList[i], lineNum);
         lineNum++;
     }
 
     return contentList;
+};
+
+/*
+ * @param {string} fuzzyLine line containing inline comment
+ * @param {string} lineNum
+ * @return {string} code
+ */
+
+function enumerateSingleLine(fuzzyLine, lineNum) {
+    // remove inline comment
+    var code = fuzzyLine.split("#")[0];
+    // stript white spaces and add line number
+    code = code.trim() + "@" + lineNum;
+    
+    return code;
 };
 
 /*
@@ -48,7 +62,7 @@ function thisLineIsAComment(line) {
 };
 /*
  * @param line {string} single line of code
- * @return {boolean}
+ * @return {boolean} true if there is syntax error
  */
 
 function thereIsSyntaxError(line) {
@@ -62,6 +76,7 @@ function thereIsSyntaxError(line) {
 };
 
 /*
+ * main thread
  * @param content {string} all the code
  */
 

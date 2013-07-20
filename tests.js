@@ -23,3 +23,14 @@ test("is a full line comment", function() {
     equal(thisLineIsAComment("    #blah blah"), true);
     equal(thisLineIsAComment("aba cdc #ccccc"), false);
 });
+
+/*
+ * remove inline comment and add line number
+ */
+
+test("strip inline comment and add line number", function() {
+    equal(enumerateSingleLine("what is this? #this is an inline comment",0), "what is this?@0");
+    equal(enumerateSingleLine("what is this? #this is an inline comment",2), "what is this?@2");
+    equal(enumerateSingleLine("add 3 4 #this is also a comment man!", 523), "add 3 4@523");
+});
+
